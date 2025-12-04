@@ -67,6 +67,25 @@
       padding-bottom: 16px; /* optional space below */
       text-align: center;   /* center text horizontally */
     }
+
+    /* Responsive adjustments for small screens */
+    @media (max-width: 480px) {
+      body {
+        padding: 20px 10px; /* reduce padding on very small screens */
+      }
+
+      h1 {
+        font-size: 2rem; /* smaller title for small screens */
+      }
+
+      p.bio {
+        font-size: 0.9rem; /* smaller bio text */
+      }
+
+      #mc_embed_signup {
+        transform: scale(0.65); /* slightly smaller on mobile */
+      }
+    }
   </style>
 </head>
 <body>
