@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: sans-serif;
-      background: #cccccc; /* Grey background */
+      background: #cccccc;
       color: #222;
       display: flex;
       flex-direction: column;
@@ -22,96 +22,124 @@
       text-align: center;
     }
 
+    /* --- TITLE STYLES --- */
     .title-box {
       display: flex;
       justify-content: center;
       align-items: center;
-      border: 6px solid #222;
+      border: 6px solid #222; /* Default thick border for desktop */
       width: 100%;
+      /* Important: Use box-sizing so padding doesn't make it wider than 100% */
+      box-sizing: border-box; 
       padding: 12px 24px;
-      margin-bottom: 16px;
+      margin-bottom: 25px;
+      background-color: #cccccc; /* Matches body */
     }
 
     h1 {
       margin: 0;
       font-size: 3rem;
       text-transform: uppercase;
+      line-height: 1; /* Keeps the title tight */
+    }
+
+    /* --- IMAGE STYLES --- */
+    .hero-image {
+      /* This ensures the image is never wider than the screen */
+      max-width: 100%; 
+      height: auto;
+      
+      /* These three lines are the magic for centering a block image */
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 20px;
+      
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* Adds a subtle shadow for pop */
     }
 
     p.bio {
       margin-bottom: 32px;
       line-height: 1.5;
+      font-size: 1.1rem;
     }
 
     .links a {
       display: inline-block;
-      padding: 12px 16px;
+      padding: 12px 24px;
       margin: 8px 0;
       background: #d35400;
       color: #fff;
       text-decoration: none;
       border-radius: 6px;
+      font-weight: bold;
     }
 
     .links a:hover {
       background: #e67e22;
     }
 
-    /* Updated image class */
-    .hero-image {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 16px auto;
-      border-radius: 8px;
-    }
-
-    /* Adjust Mailchimp form to medium size */
+    /* --- MAILCHIMP STYLES --- */
     #mc_embed_signup {
-      transform: scale(0.75);
-      transform-origin: top center;
       margin-top: 16px;
+      /* Removed the transform scale hack to improve layout stability */
+      width: 100%;
+    }
+    
+    /* Make Mailchimp inputs responsive */
+    #mc_embed_signup input.email, 
+    #mc_embed_signup input {
+        width: 100%;
+        max-width: 300px; /* Prevents inputs from getting too wide */
+        box-sizing: border-box;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #999;
+        border-radius: 4px;
     }
 
-    /* Move newsletter heading lower and center */
     #mc_embed_signup_scroll {
-      padding-top: 16px;
-      padding-bottom: 16px;
+      padding: 16px 0;
       text-align: center;
     }
 
-    /* Responsive adjustments for small screens */
-    @media (max-width: 480px) {
+    /* --- MOBILE ADJUSTMENTS (Phones) --- */
+    @media (max-width: 600px) {
       body {
-        padding: 20px 10px;
+        padding: 20px 15px; /* Less padding on edges */
       }
 
+      /* Fix the Title Box */
+      .title-box {
+        border-width: 3px; /* thinner border */
+        padding: 10px;     /* tighter padding */
+      }
+      
       h1 {
-        font-size: 2rem;
+        font-size: 2rem;   /* smaller text */
+      }
+
+      /* Fix the Image */
+      .hero-image {
+        max-width: 90%; /* Sets image to 90% of screen width */
       }
 
       p.bio {
-        font-size: 0.9rem;
-      }
-
-      #mc_embed_signup {
-        transform: scale(0.65);
-      }
-
-      /* Smaller image on phones */
-      .hero-image {
-        width: 80%;
+        font-size: 1rem;
+        padding: 0 10px;
       }
     }
   </style>
 </head>
 <body>
+
   <div class="container">
+    
     <div class="title-box">
       <h1>LIBERANDOS</h1>
     </div>
 
-    <!-- Updated image class -->
     <img class="hero-image" src="Weird Future man.png" alt="Liberandos Image">
 
     <p class="bio">Liberandos is a rock band of liberators from the belly of the Leviathan</p>
@@ -120,9 +148,7 @@
       <a href="https://instagram.com/theliberandos" target="_blank">Instagram</a>
     </div>
 
-    <!-- Mailchimp Signup Form -->
     <div id="mc_embed_shell">
-      <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
       <div id="mc_embed_signup">
           <form action="https://theliberandos.us5.list-manage.com/subscribe/post?u=94c23d45387d1a0f51d9bcb85&amp;id=2d55017ae4&amp;f_id=0065c1e1f0" 
                 method="post" 
@@ -134,28 +160,16 @@
               <div id="mc_embed_signup_scroll">
                   <h2>LIBERANDOS NEWSLETTER</h2>
                   
-                  <div class="indicates-required">
-                    <span class="asterisk">*</span> indicates required
+                  <div class="mc-field-group">
+                    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address *" required>
                   </div>
 
                   <div class="mc-field-group">
-                    <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
-                    <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required>
+                    <input type="text" name="FNAME" id="mce-FNAME" placeholder="First Name">
                   </div>
 
                   <div class="mc-field-group">
-                    <label for="mce-FNAME">First Name </label>
-                    <input type="text" name="FNAME" id="mce-FNAME">
-                  </div>
-
-                  <div class="mc-field-group">
-                    <label for="mce-LNAME">Last Name </label>
-                    <input type="text" name="LNAME" id="mce-LNAME">
-                  </div>
-
-                  <div class="mc-field-group">
-                    <label for="mce-PHONE">Phone Number </label>
-                    <input type="text" name="PHONE" id="mce-PHONE">
+                    <input type="text" name="LNAME" id="mce-LNAME" placeholder="Last Name">
                   </div>
 
                   <div id="mce-responses" class="clear foot">
@@ -164,41 +178,19 @@
                   </div>
 
                   <div style="position:absolute; left:-5000px;" aria-hidden="true">
-                      <input type="text" 
-                             name="b_94c23d45387d1a0f51d9bcb85_2d55017ae4" 
-                             tabindex="-1" 
-                             value="">
+                      <input type="text" name="b_94c23d45387d1a0f51d9bcb85_2d55017ae4" tabindex="-1" value="">
                   </div>
 
                   <div class="optionalParent">
                       <div class="clear foot">
-                          <input type="submit" 
-                                 name="subscribe" 
-                                 id="mc-embedded-subscribe" 
-                                 class="button" 
-                                 value="Subscribe">
+                          <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe" style="background-color: #333; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px;">
                       </div>
                   </div>
               </div>
           </form>
       </div>
-
-      <script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
-      <script>
-        (function($){
-          window.fnames = new Array(); 
-          window.ftypes = new Array();
-          fnames[0]='EMAIL';ftypes[0]='email';
-          fnames[1]='FNAME';ftypes[1]='text';
-          fnames[2]='LNAME';ftypes[2]='text';
-          fnames[4]='PHONE';ftypes[4]='phone';
-          fnames[3]='ADDRESS';ftypes[3]='address';
-          fnames[5]='BIRTHDAY';ftypes[5]='birthday';
-          fnames[6]='COMPANY';ftypes[6]='text';
-        }(jQuery));
-        var $mcj = jQuery.noConflict(true);
-      </script>
     </div>
+
   </div>
 </body>
 </html>
